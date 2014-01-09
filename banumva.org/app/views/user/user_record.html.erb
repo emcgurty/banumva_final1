@@ -1,0 +1,30 @@
+
+<%= form_for(:user, :url => {:action => 'user_record'}) do |nf| %>   
+
+  <%= render :partial => 'home/check_for_errors', :locals => {:data_source => @user}  %>
+
+  <p class="PetitionTitle"><%=  session[:user_update_title] %></p>
+  <p  class="PetitionTitle">All fields are required.</p>
+  <p class="PetitionTitleText">
+    User Name, Password, Alias and email address must be unique.</p>
+  <p class="PetitionTitleText">User Name, Password, Alias are case sensitive, and must contain no fewer than 8 characters and no more than 16.</p>
+  <p  class="PetitionTitle"><span title="User alias must contain 8 through 16 alpha-numeric characters.">User Alias: </span>
+    <%= nf.text_field(:user_alias, :maxlength=>"16") %></p>
+  <p  class="PetitionTitle"><span  title="User name must contain 8 through 16 alpha-numeric characters">User Name: </span>
+    <%= nf.text_field(:username, :maxlength=>"16") %></p>
+  <p  class="PetitionTitle"><span  title="Password must contain 8 through 16 alpha-numeric characters" >Password: </span>
+    <%= nf.password_field(:password,:maxlength=>"16") %></p>
+  <p  class="PetitionTitle"><span  title="Passwords must match." >Re-enter password: </span>
+    <%= nf.password_field(:password_confirmation, :maxlength=>"16",  :size=>"16") %></p>
+  <p  class="PetitionTitle"  ><span title="Required to acknowledge your Registration.">email address: </span>
+<%= nf.text_field(:tmp_email) %></p>
+  <p  class="PetitionTitle"  ><%= submit_tag session[:user_commit], { :class => "button_style"} %>&nbsp;
+    <%= link_to "Changed My Mind", root_url, {:class=> "button_style"} %></p>
+    <%= nf.hidden_field :remote_ip, :value => request.remote_ip %>
+
+  <% begin %>
+    <%=  nf.hidden_field :user_id %>
+  <% rescue %>
+  <% end %>
+
+<% end %>

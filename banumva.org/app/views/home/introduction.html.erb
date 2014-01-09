@@ -1,0 +1,145 @@
+<style>
+
+  #introduction_fade {
+    margin-top: 25px;
+    margin-left: 200px;
+    margin-right: 200px;
+    border-bottom-width:2px;
+    padding-bottom: 5%;
+    border-bottom-color: lightgray;
+    border-bottom-style: solid;
+    font-size: 16px;
+    font-weight:bold;
+  }
+
+</style>
+
+
+<div id="introduction_fade">
+  <div >Do you recognize this symbol?<br/><br/>
+    <%= link_to image_tag('/images/image18.gif', :style=>"border:0;"),  "http://www.epa.gov/radiation/understand/symbols.html" %>
+  </div><br/>
+  <div id="intro_bottom">
+    <%= link_to "EPA: Radioactively Contaminated Sites", "http://www.epa.gov/radiation/rert/contaminatedsites.html", :target => '_blank' %>
+  </div>
+</div>
+
+<div id="introduction_fade">
+  <div>
+    What if it or something like it were to appear ....<br/><br/>
+    <%= link_to image_tag('/images/un-radioactive_warning_sign.jpg', :style=>"border:0;"),  "http://www.epa.gov/radiation/understand/symbols.html" %>
+  </div>
+  <br/>
+  <div id="intro_bottom">
+    <%= link_to "EPA: Cleaning Up Radioactive Sites", "http://www.epa.gov/radiation/cleanup.html" , :target => '_blank' %>
+
+  </div>
+
+</div>
+
+<div id="introduction_fade">
+  <div>
+    ... as a warning label on staple foods -- having been exposed to radiation -- like grains, beef, fish, or milk?
+  </div>
+  <br/>
+  <div id="intro_bottom">
+
+    <%= link_to "With radiation, worries about food", "http://news.harvard.edu/gazette/story/2013/03/with-radiation-worries-about-food/" , :target => '_blank'%>
+    <br/><br/>
+    <%= link_to "Radiation risks from Fukushima 'no longer negligible'", "http://www.euractiv.com/health/radiation-risks-fukushima-longer-news-503947", :target => '_blank' %>
+    <br/><br/>
+    <%= link_to "The Nuclear Accident in Japan", "http://www.foodandwaterwatch.org/food/foodsafety/the-nuclear-accident-in-japan/", :target => '_blank' %>
+  </div>
+
+</div>
+
+<div id="introduction_fade">
+  <div>
+    ... posted at the entry of your local water reservoir?
+  </div>
+  <br/>
+  <div id="intro_bottom">
+    <%= link_to  "Radioactive Iodine-131 in rainwater sample near San Francisco 18,000% above federal drinking water standard", "http://enenews.com/radioactive-iodine-131-in-rainwater-sample-near-san-francisco-is-18100-above-federal-drinking-water-standard" , :target => '_blank' %>
+    <br/><br/>
+    <%=  link_to "Phase II Assessment:Potential Impacts of Uranium Mining in Virginia on Drinking Water Sources", "http://www.vbgov.com/government/departments/public-utilities/Documents/20120210-PUT-Uranium%20Mining_Executive%20Summary_Phase%20II.pdf", :target => '_blank' %>
+<br/><br/>
+    <%=  link_to "A World Without Water, a film by True Vision", "http://www.youtube.com/embed/egtKx24dat8", :target => '_blank' %>
+  </div>
+</div>
+
+<div id="introduction_fade">
+  <div>... were posted as a warning on entry to your community?
+  </div>
+  <br/>
+  <div id="intro_bottom">
+    <%= link_to "Reduction in childhood cancer following nuclear plant shut down", "http://www.bmijournal.org/index.php/bmi/article/viewFile/128/84", :target => '_blank' %>
+  </div>
+</div>
+
+<div id="introduction_fade">
+  <div>... were posted in front of your house?  Your farm?
+  </div>
+  <br/>
+  <div id="intro_bottom">
+    <%= link_to "14,000 U.S. Deaths Tied to Fukushima Reactor Disaster Fallout", "http://www.prnewswire.com/news-releases/medical-journal-article--14000-us-deaths-tied-to-fukushima-reactor-disaster-fallout-135859288.html", :target => '_blank' %>
+  </div>
+</div>
+
+<div id="introduction_fade">
+  <div>What if you learned that it may actually need to be there if radioactive uranium, which will endure for thousands of years, were released into our shared and interdependent world?
+  </div>
+  <br/>
+  <div id="intro_bottom">
+    <%= link_to "An Unexpected Mortality Increase In The United States Follows Arrival Of The Radioactive Plume From Fukushima", "http://www.radiation.org/reading/pubs/HS42_1F.pdf", :target => '_blank' %>
+  </div>
+</div>
+
+<div id="introduction_fade">
+  <div>What if you learned that radiation exposure is causing generational defects in DNA? Causing abnormalities in newborns never previously seen, and cancer rates statistically and hugely beyond those not exposed to radiation!
+  </div>
+
+</div>
+
+
+<div id="introduction_fade">
+  <div>Here you will learn more about uranium mining, the uses of that uranium, and you will find opportunities to make your voice heard.
+  </div>
+  <br/>
+  <div>I am sorry but it just boggles the mind... The water source on the Earth is finite! Mankind has NO WAY to replenish or replace Water on Earth. We all
+    need to grasp that radioactive pollution to our finite water source will endure for tens of thousands of years.
+  </div>
+  <br/>
+  <div id="intro_bottom">
+    <%= link_to "Problems of U.S. Uranium Resources and Supply to the Year 2010 (1978)", "http://books.google.com/books?id=szIrAAAAYAAJ&printsec=frontcover#v=onepage&q&f=false", :target => '_blank' %>
+    <br/>
+    <br/>
+    <%= link_to "National Academy of Sciences Uranium Mining in Virginia: Scientific, Technical, Environmental, Human Health and Safety, and Regulatory Aspects of Uranium Mining and Processing in Virginia (2012)", "http://www.nap.edu/openbook.php?record_id=13266&page=1", :target => '_blank' %>
+    <br/>
+  </div>
+</div>
+
+
+<script type="text/javascript">
+
+
+  var introduction = $("[id^=introduction_fade]");
+  introduction.hide();
+  var introductionIndex = -1;
+
+  function showNextintroduction() {
+    if (introductionIndex != introduction.length-2) {
+      ++introductionIndex;
+      introduction.eq(introductionIndex % introduction.length)
+      .fadeIn(1000)
+      .delay(4000)
+      .fadeOut(1000, showNextintroduction);}
+    else {
+      introductionIndex= -1;
+      introduction.show();
+    }
+  }
+  showNextintroduction();
+
+</script>
+
+

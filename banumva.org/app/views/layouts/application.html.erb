@@ -1,0 +1,453 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html lang="en">
+  <head>
+    <title>No Uranium Mining in Virginia!</title>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-43101997-1', 'banumva.org');
+  ga('send', 'pageview');
+
+</script>
+
+    <meta name="description" content="uranium mining tailings nuclear power weapons Virginia" />
+    <meta name="keywords" content="" />
+    <%= javascript_include_tag "application.js" %>
+    <%= stylesheet_link_tag :all, :cache => false %>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+
+    <script type="text/javascript">
+      $(document).ready(function() {
+        $(function() {
+          $( document ).tooltip();
+        });
+
+        var showing_map = false;
+        var showing_who_is = false;
+        var showing_video = false;
+        var showing_alternative = false;
+
+        var traverseIndex = -1;
+        var footprint = $(".tips_string");  // carbo foot print
+        var htraverseIndex = -1;
+        var videos = $(".videos_string");  //videos
+        var maps = $(".maps_string");      //maps
+        var alternatives = $(".alternative_string");  //alternatives
+        var who_is = $(".who_is_string");  // who_is
+        var resource_container = $("div.resource_container");
+        
+        $("#carbonfootprint_click").click( function() {
+          htraverseIndex = -1;
+          $("#carbonfootprint_click").hide();
+          showNextcarbonfootprint();
+          
+        }
+      );
+
+        function showNextcarbonfootprint() {
+          if (htraverseIndex != footprint.length-1) {
+            ++htraverseIndex;
+            footprint.eq(htraverseIndex % footprint.length)
+            .fadeIn(1000)
+            .delay(2000)
+            .fadeOut(1000, showNextcarbonfootprint);}
+          else {
+            $("#carbonfootprint_click").show();
+            footprint.eq(0).show();
+          }
+        }
+
+
+        $("#current_comment").change( function() {
+          var msg = "";
+          var tempmsg = "";
+          var num1 = 255;
+          var num2 = 1;
+          var num2 =  $("#current_comment").val().length;
+          num1 = num1 - num2;
+          if (num1 < 0) {
+            tempmsg = (-1) * (num1);
+            msg = "You have entered "   + tempmsg + " too many characters."
+          } else if (num1 == 0) {
+            msg = "You have entered 255 characters."
+          } else {
+            msg = num1;
+          }
+          
+          $("#current_comment_count").text(msg);
+        }
+      );
+
+
+
+        $("#introduction").click( function() {
+          window.location = '/home/introduction';
+        }
+      );
+
+        $("#home").click(function() {
+          show_traverse = false;
+          window.location = '/home/index';
+        });
+
+
+        $("#site_author").click(function() {
+          window.location = '/collaborator/show';
+
+        });
+
+
+        $("#resources").click(function() {
+          $("#video_center").hide();
+          $("#map_center").hide();
+          $("#alternative_center").hide();
+          $("#who_is_center").hide();
+          hide_resource_stuff(0);
+          resource_container.show();
+        });
+
+        $("#the_petition").click(function() {
+          resource_container.hide();
+          hide_resource_stuff(0);
+          window.location = '/signatures/show_refresh';
+        });
+
+        $("#perspectives").click(function() {
+          resource_container.hide();
+          hide_resource_stuff(0);
+          window.location = '/perspectives/show';
+
+        });
+
+        $("#register").click(function() {
+          resource_container.hide();
+          hide_resource_stuff(0);
+          window.location = '/user/user_record';
+
+        });
+
+        $("#login").click(function() {
+          resource_container.hide();
+          hide_resource_stuff(0);
+          window.location = '/user/show';
+
+        });
+        $("#logout").click(function() {
+          resource_container.hide();
+          hide_resource_stuff(0);
+          window.location = '/user/logout';
+
+        });
+
+        $("input[id=delete_signature]").click(function() {
+     
+          if (confirm("Are you sure you wish to delete your Petition Signature?")) {
+            
+            var uid = $(this).attr('name');
+            window.location = '/signatures/delete/' + uid;
+          }
+        });
+
+
+        $("input[id=delete_perspective]").click(function() {
+
+          if (confirm("Are you sure you wish to delete your Perspective?")) {
+
+            var uid = $(this).attr('name');
+         
+            window.location = '/perspectives/delete/' + uid;
+          }
+        });
+
+
+        $("input[id=delete_contribution]").click(function() {
+
+          if (confirm("Are you sure you wish to delete your Perspective Response?")) {
+
+            var uid = $(this).attr('name');
+
+            window.location = '/contributions/delete/' + uid;
+          }
+        });
+
+
+        $("#update_detail").click(function() {
+          resource_container.hide();
+          hide_resource_stuff(0);
+          var uid = $("#session_user_id").val();
+          window.location = '/user/user_record/' + uid;
+
+        });
+
+        $("#next").click(function() {
+          traverseIndex = traverseIndex + 1;
+          if (showing_video) {
+            videos.hide();
+            video_clicked(traverseIndex);
+          } else if (showing_alternative) {
+            alternatives.hide();
+            alternatives_clicked(traverseIndex);
+          } else if (showing_map) {
+            maps.hide();
+            map_clicked(traverseIndex);
+          } else if (showing_who_is) {
+            who_is.hide();
+            who_is_clicked(traverseIndex);
+          }
+        });
+
+        $("#previous").click(function() {
+
+          traverseIndex = traverseIndex - 1;
+
+          if (showing_video) {
+            videos.hide();
+            video_clicked(traverseIndex);
+          } else if (showing_alternative) {
+            alternatives.hide();
+            alternatives_clicked(traverseIndex);
+          } else if (showing_map) {
+            maps.hide();
+            map_clicked(traverseIndex);
+          } else if (showing_who_is) {
+            who_is.hide();
+            who_is_clicked(traverseIndex);
+          }
+        });
+
+
+        $("#first").click(function() {
+          traverseIndex = 0;
+          if (showing_video) {
+            videos.hide();
+            video_clicked(traverseIndex);
+          } else if (showing_alternative) {
+            alternatives.hide();
+            alternatives_clicked(traverseIndex);
+          } else if (showing_map) {
+            maps.hide();
+            map_clicked(traverseIndex);
+          } else if (showing_who_is) {
+            who_is.hide();
+            who_is_clicked(traverseIndex);
+          }
+        });
+
+        $("#last").click(function() {
+          if (showing_video) {
+            traverseIndex = videos.length - 1;
+            videos.hide();
+            video_clicked(traverseIndex);
+          } else if (showing_alternative) {
+            traverseIndex = alternatives.length - 1;
+            alternatives.hide();
+            alternatives_clicked(traverseIndex);
+          } else if (showing_map) {
+            traverseIndex = maps.length - 1;
+            maps.hide();
+            map_clicked(traverseIndex);
+          } else if (showing_who_is) {
+            traverseIndex = who_is.length - 1;
+            who_is.hide();
+            who_is_clicked(traverseIndex);
+          }
+        });
+
+        $("#video_click").click( function() {
+          $("#resources").click();
+          traverseIndex = -1;
+          video_clicked(0);
+        });
+
+
+        function video_clicked(wnum) {
+          show_what('showing_videos');
+          if (wnum <= 0){
+            $('#previous').attr('disabled', 'disabled').css('text-decoration','line-through');
+            $('#next').removeAttr('disabled').css('text-decoration','none');
+            traverseIndex = wnum = 0;
+          } else if (wnum >= videos.length -1 ) {
+            $('#previous').removeAttr('disabled').css('text-decoration','none');
+            $('#next').attr('disabled', 'disabled').css('text-decoration','line-through');
+            traverseIndex = wnum = videos.length -1;
+          } else {traverseIndex = wnum;
+
+            $('#next').removeAttr('disabled').css('text-decoration','none');
+            $('#previous').removeAttr('disabled').css('text-decoration','none');
+          }
+          $("#count_of").text((wnum + 1) + " of " + videos.length + " Videos");
+          videos.eq(wnum).show();
+        }
+
+        $("#map_click").click(function() {
+          $("#resources").click();
+          traverseIndex = -1;
+          map_clicked(0);
+        });
+
+        function map_clicked(wnum) {
+          show_what('showing_maps');
+          if (wnum <= 0){
+            $('#previous').attr('disabled', 'disabled').css('text-decoration','line-through');
+            $('#next').removeAttr('disabled').css('text-decoration','none');
+            traverseIndex = wnum = 0;
+          } else if (wnum >= maps.length -1 ) {
+            $('#previous').removeAttr('disabled').css('text-decoration','none');
+            $('#next').attr('disabled', 'disabled').css('text-decoration','line-through');
+            traverseIndex = wnum = maps.length -1;
+          } else {traverseIndex = wnum;
+            $('#next').removeAttr('disabled').css('text-decoration','none');
+            $('#previous').removeAttr('disabled').css('text-decoration','none');
+          }
+          $("#count_of").text((wnum + 1) + " of " + maps.length + " Maps");
+          maps.eq(wnum).show();
+        }
+
+        $("#alternative_click").click(function() {
+          $("#resources").click();
+          traverseIndex = -1;
+          alternatives_clicked(0);}
+      );
+
+        function alternatives_clicked(wnum) {
+          show_what('showing_alternative');
+          if (wnum <= 0){
+            $('#previous').attr('disabled', 'disabled').css('text-decoration','line-through');
+            $('#next').removeAttr('disabled').css('text-decoration','none');
+            traverseIndex = wnum = 0;
+          } else if (wnum >= alternatives.length -1 ) {
+            $('#previous').removeAttr('disabled').css('text-decoration','none');
+            $('#next').attr('disabled', 'disabled').css('text-decoration','line-through');
+            traverseIndex = wnum = alternatives.length -1;
+          } else {traverseIndex = wnum;
+            $('#next').removeAttr('disabled').css('text-decoration','none');
+            $('#previous').removeAttr('disabled').css('text-decoration','none');}
+          $("#count_of").text((wnum + 1) + " of " + alternatives.length + " Energy Alternatives");
+      
+          alternatives.eq(wnum).show();
+        }
+
+        $("#who_is_click").click(function() {
+          $("#resources").click();
+          traverseIndex = -1;
+          who_is_clicked(0);}
+      );
+
+        function who_is_clicked(wnum) {
+          show_what('showing_who_is');
+          if (wnum <= 0){
+            $('#previous').attr('disabled', 'disabled').css('text-decoration','line-through');
+            $('#next').removeAttr('disabled').css('text-decoration','none');
+            traverseIndex = wnum = 0;
+          } else if (wnum >= who_is.length -1 ) {
+            $('#previous').removeAttr('disabled').css('text-decoration','none');
+            $('#next').attr('disabled', 'disabled').css('text-decoration','line-through');
+            traverseIndex = wnum = who_is.length -1;
+          } else {traverseIndex = wnum;
+            $('#next').removeAttr('disabled').css('text-decoration','none');
+            $('#previous').removeAttr('disabled').css('text-decoration','none');}
+          $("#count_of").text((wnum + 1) + " of " + who_is.length + " Who Is");
+      
+          who_is.eq(wnum).show();
+        }
+
+
+        function show_what(what) {
+          showing_map = false;
+          showing_who_is = false;
+          showing_video = false;
+          showing_alternative = false;
+          $("#map_click").css("color", "black");
+          $("#who_is_click").css("color", "black");
+          $("#alternative_click").css("color", "black");
+          $("#video_click").css("color", "black");
+
+          $("#map_center").hide();
+          $("#video_center").hide();
+          videos.hide();
+          $("#alternative_center").hide();
+          $("#who_is_center").hide();
+          hide_resource_stuff(1);
+          $('#next').removeAttr('disabled').css('text-decoration','none');
+          $('#previous').attr('disabled', 'disabled').css('text-decoration','line-through');  //becuase we are starting on the first element
+          if (what == 'showing_videos'){
+            showing_video = true;
+            $("#video_center").show();
+            $("#video_click").css("color", "green");
+          } else if (what == 'showing_who_is'){
+            showing_who_is = true;
+            $("#who_is_center").show();
+            $("#who_is_click").css("color", "green");
+          } else if (what == 'showing_alternative'){
+            showing_alternative = true;
+            $("#alternative_center").show();
+            $("#alternative_click").css("color", "green");
+          } else if (what == 'showing_maps'){
+            showing_map = true;
+            $("#map_center").show();
+            $("#map_click").css("color", "green");
+
+          }
+        }
+
+        function hide_resource_stuff(num){
+          if (num == 1) {
+            $("#count_of").show();
+            $("#tbuttons").show();
+          } else {
+            $("#count_of").hide();
+            $("#tbuttons").hide();
+          }
+        }
+
+      });
+    </script>
+
+
+  </head>
+  <body>
+
+
+    <% content_for :header do %>
+      <%= render :partial => 'home/traverse' %>
+    <% end %>
+
+    <% content_for :footer do %>
+      <%= render :partial => 'menus/footer'  %>
+    <% end %>
+
+
+    <% content_for :center do %>
+      <%= yield -%>
+    <% end %>
+
+
+
+    <div class="center_content" >
+      <%= yield :header %>
+    </div>
+
+
+
+
+    <div class="center_content" >
+      <%= render :partial => 'layouts/flash_helper' %>
+      <%= yield  :center -%>
+    </div>
+
+     <div class="center_content" >
+      <%= render :partial => 'menus/others'  %><br />
+      <%= yield :footer %>
+    </div>
+
+
+  </body>
+</html>

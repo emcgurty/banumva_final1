@@ -1,0 +1,44 @@
+<% myColor1 = 0 %>
+<% unless object.blank? %>
+  <table class="ListCommentsAfter" >
+    <tr >
+      <th  >Alias</th>
+      <th  >email</th>
+      <th  >Response</th>
+      <th  >Date Created</th>
+      <th  >Function</th>
+    </tr>
+
+    <% object.each do |cmt| %>
+      <% myColor1 = myColor1 +1 %>
+      <% if (myColor1 % 2) == 1 %>
+        <tr bgcolor="#f5f5f5" >
+        <% else %>
+        <tr bgcolor="#dccdc">
+        <% end %>
+
+        <td ><%=  User.find(cmt.user_id).user_alias %></td>
+        <td ><%=  mail_to User.find(cmt.user_id).email %></td>
+        <td ><textarea rows="4" cols="50"  readonly><%=  cmt.record_text %></textarea></td>
+        <td class=smalldate><%=  cmt.created_at %></td>
+
+
+        <% unless session[:user_id].blank? %>
+          <% if cmt.user_id == session[:user_id] %>
+            <td ><input type="button" value="Delete" id="delete_contribution" name="<%= cmt.c_uuid %>" class="button_style_menu" /> || <%= link_to "Edit", contributions_edit_url(cmt.c_uuid)  %></td>
+            <% else %>
+            <td>N/A</td>
+          <% end %>
+        <% else %>
+          <td >N/A</td>
+        <% end %>
+      </tr>
+    <% end %>
+  </table>
+<% else %>
+  <%#*<table class="ListCommentsAfter" >%>
+  <%#*<tr bgcolor="#ffe4e1">%>
+  <%#*<td >No Perspective responses have been offered</td>%>
+  <%#*</tr>%>
+  <%#*</table>%>
+<% end %>

@@ -1,0 +1,30 @@
+<script>
+   $(document).ready(function() {
+      $("#current_comment").change();
+   });
+
+</script>
+
+
+
+<%= form_tag({:controller => 'perspectives', :action => 'update'}) do  %>
+  <%= render :partial => 'home/check_for_errors', :locals => {:data_source => @perspectives}  %>
+
+  <p class=PetitionTitle >Perspective Edit</p>
+
+  <p class=PetitionTitleText ><span title="Perspective is required. No more than 255 characters." >Perspective:</span>
+    <%=  text_area_tag :record_text, @perspectives.record_text, :rows=>6, :cols=>30, :maxlength=>255, :id=> "current_comment" %></p>
+<p  class="PetitionTitleText" ><span title="Count excludes carriage returns." >Approximate Characters Remaining: </span><label id="current_comment_count" >255</label></p>
+  <%= hidden_field_tag 'created_at', @perspectives.created_at %>
+  <%= hidden_field_tag 'remote_ip', request.remote_ip %>
+  <%= hidden_field_tag 'created_at', Time.now %>
+  <%= hidden_field_tag 'p_uuid', @perspectives.p_uuid %>
+
+
+
+<%= submit_tag "Submit Edit" , {:class=>"button_style" } %>&nbsp
+<%= link_to  "Changed My Mind", perspectives_show_url, {:class=>"button_style"} %>&nbsp
+
+
+<% end %>
+

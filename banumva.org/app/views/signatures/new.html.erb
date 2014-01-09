@@ -1,0 +1,48 @@
+
+<% collab_country = CollaboratorMethods.collaborator_value[:collaborator][:country] %>
+<% collab_state = CollaboratorMethods.collaborator_value[:collaborator][:state] %>
+
+<p class=PetitionTitle >Sign the Petition</p>
+<p class=PetitionTitle>The Petition</p>
+<%=  render :partial => 'signatures/thepetition' %>
+
+<%= form_for(:signatures , :url => {:action => 'create'}) do |item| %>
+  <%= render :partial => 'home/check_for_errors', :locals => {:data_source => @signatures}  %>
+  <p class=PetitionTitle ><span title="First Name is required. Please not more than 35 alpha characters." >First Name:</span>
+    <%=  item.text_field(:first_name, :maxlength=>35) %>&nbsp;
+    MI: <%=  item.text_field(:mi, :maxlength=> 1) %>&nbsp;
+    <span title="Last Name is required. Please not more than 35 alpha chars." >Last Name: </span>
+    <%=  item.text_field(:last_name, :maxlength=>35) %></p>
+  <p class=PetitionTitle >Would you like your full name displayed in the listing of all Petition signers? &nbsp;<%= item.check_box(:display_name) %> &nbsp;
+    Otherwise only your Alias will appear.</p>
+  <p class=PetitionTitle ><span title="Alias is required.  Please no more fewer than 8 character and no more than 16." >Alias: </span>
+<%= item.text_field(:signer_alias, :maxlength=>16) %>&nbsp;
+    <span title="You should be at least 18 years old to sign this. But, heck, I think the voice of our youth really matters.">Year of Birth: </span>
+    <%= select("signatures", "YOB", 1910.upto(2000).to_a ) %></p>
+  <p class=PetitionTitle ><span title="Required to acknowledge your signature, and if you wish to communicate with other signers." >email address: </span>
+    <%= item.text_field(:email, :maxlength=>100, :size=>50) %></p>
+  <p class=PetitionTitle >Would you like to receive email from other signers?<%= item.check_box(:display_email) %></p>
+
+
+
+
+
+  <p class=PetitionTitle ><span title="City or County is required. Please not more than 50 alpha chars." >City or County: </span>
+<%= item.text_field(:city, :maxlength => 50) %> <span title="State is required. Please choose." >State: </span>
+    <%= render :partial => 'layouts/generate_combo', :locals => {:name => :us_states, :selected => collab_state} %></p>
+  <p class=PetitionTitle >Providence: <%= item.text_field(:providence, :size => 15) %>&nbsp;
+    <span title="Country is required. Please choose." >Country: </span>
+    <%= render :partial => 'layouts/generate_combo', :locals => {:name => :countries, :selected => collab_country} %></p>
+  <p class=PetitionTitle >Postal Code: <%= item.text_field(:postal_code, :maxlength =>20) %></p>
+  <p class=PetitionTitle >
+    <span title="Optional, if provided your comment will appear in the list of all Petition signatures. Please no more than 255 chars.">Comments: </span></p>
+  <p class=PetitionTitle ><%= item.text_area(:comments,:rows=>5, :cols=>55,  :maxlength =>255,:id=>"current_comment" ) %></p>
+  <p  class="PetitionTitleText" ><span title="Count excludes carriage returns." >Approximate Characters Remaining: </span><label id="current_comment_count" >255</label></p>
+
+  <%= item.hidden_field :created_at, :value => Time.now %>
+  <%= item.hidden_field :remote_ip, :value => request.remote_ip %>
+  <%= item.hidden_field :comments_approved, :value => 0 %>
+
+  <%= submit_tag "Submit Electronic Signature" , {:class=>"button_style" } %>&nbsp
+  <%= link_to  "Changed My Mind", show_refresh_url, {:class=>"button_style"} %>
+<% end %>

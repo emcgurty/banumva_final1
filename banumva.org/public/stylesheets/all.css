@@ -1,0 +1,654 @@
+html, body, table, td, input, textarea, select, div, ul, li, h2, h3, h4, h5, h6, p, a {
+    font-family: Verdana,Arial,Helvetica,Times;
+
+}
+
+input[type=button]:hover
+{
+  color: green;
+  font-size:16px;
+}
+
+
+th {
+
+    text-align: left;
+    color: black;
+    font-size:14px;
+    font-weight: bold;
+    background-color:white;
+    text-decoration: none;
+
+}
+
+div.intro_top {
+
+}
+
+div.intro_middle {
+
+    position: absolute; bottom: 50px; width: 100%;
+}
+
+#intro_bottom {
+    position: relative;
+    bottom: 3px; width: 100%;
+    font-size:12px;
+    /*line-height: 18px;*/
+    margin:3px;
+    padding:3px;
+
+
+}
+
+/* make keyframes that tell the start state and the end state of our object */
+/*@-webkit-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+@-moz-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+@keyframes fadeIn { from { opacity:0; } to { opacity:1; } }*/
+
+/*.fade-in {
+    opacity:0;   make things invisible upon start 
+    -webkit-animation:fadeIn ease-in 1;   call our keyframe named fadeIn, use animattion ease-in and repeat it only 1 time 
+    -moz-animation:fadeIn ease-in 1;
+    animation:fadeIn ease-in 1;
+
+    -webkit-animation-fill-mode:forwards;   this makes sure that after animation is done we remain at the last keyframe value (opacity: 1)
+    -moz-animation-fill-mode:forwards;
+    animation-fill-mode:forwards;
+
+    -webkit-animation-duration:2s;
+    -moz-animation-duration:2s;
+    animation-duration:2s;
+}
+
+.fade-in.one {
+    -webkit-animation-delay: 0.5s;
+    -moz-animation-delay: 1.5s;
+    animation-delay: 1.5s;
+}
+
+.fade-in.two {
+    -webkit-animation-delay: 10s;
+    -moz-animation-delay:10s;
+    animation-delay: 10s;
+}
+
+.fade-in.three {
+    -webkit-animation-delay: 20s;
+    -moz-animation-delay: 20s;
+    animation-delay: 20s;
+}
+.fade-in.four {
+    -webkit-animation-delay: 30s;
+    -moz-animation-delay: 30s;
+    animation-delay: 30s;
+}
+.fade-in.five {
+    -webkit-animation-delay: 40s;
+    -moz-animation-delay: 40s;
+    animation-delay: 40s;
+}*/
+/*---make a basic introduction ---*/
+.introduction{
+    display:none;
+    width: 500px;
+    height: auto;
+    text-align: center;
+    margin-left: 230px;
+    margin-right: 230px;
+    background: white; 
+    font-size:18px;
+    font-weight:bold;
+    color:black;
+    padding:15px;
+    line-height: 24px;
+    border-bottom-width:2px;
+    border-bottom-color: lightgray;
+    border-bottom-style: solid;
+
+}
+.RosaTitleSmall {
+
+    font-size:14px;
+    font-weight:normal;
+    color:black;
+}
+
+
+td.displayname
+{
+
+    font-size:12px;
+    font-weight:bold;
+    text-align: left;
+    color:black;
+    background-color:white;
+}
+
+table.userComments
+{
+
+    font-size:12px;
+    font-weight:bold;
+    text-align: left;
+    color:black;
+    background-color:white;
+}
+table.feature_list
+{
+
+    font-size:12px;
+    font-weight:bold;
+    text-align: left;
+    color:black;
+    background-color:white;
+    width:85%
+}
+
+table.ListCommentsAfter  {
+
+    border:2px;
+    padding-left:10px;
+    border-spacing:2px;
+    font-weight:normal;
+    margin-left:auto;
+    margin-right:auto;
+    width:100%;
+    border-width: 2px;
+    empty-cells: show;
+    display:block;
+    text-align:center;
+    border-color:#ffe4e1;
+
+}
+
+table.ListComments  {
+
+    border:1px;
+    padding:1px;
+    border-spacing:1px;
+    font-size: 14px;
+    font-weight:normal;
+    margin-left:auto;
+    margin-right:auto;
+    width:100%;
+    border-width: 1px;
+    empty-cells: show;
+    display:block;
+    text-align:center;
+
+}
+
+td {
+    text-align: left;
+    white-space: normal
+}
+ul.menu
+
+{
+
+    list-style-type: none;
+    font-variant:small-caps;
+    font-weight:bold;
+    font-size:18px;
+    margin: 0.05em; 
+    padding:0.0em;
+
+
+
+}
+
+ul.menu li {
+    list-style-type: none;
+    display:inline;
+    /*     BORDER: 1px solid;BORDER-COLOR:black;
+        background:white;
+        -moz-border-radius: 5px;
+        border-radius: 5px;
+        -moz-box-shadow: 2px 2px 2px 2px #333;
+        -webkit-box-shadow: 2px 2px 2px 2px #333;
+        -moz-box-shadow: 2px 2px 2px 2px #333;
+    */    padding-top:5px;
+    padding-left:15px;
+    padding-right:15px;
+    padding-bottom:5px;
+
+
+}
+
+ul.menu_right
+
+{
+    margin-top:1%;
+    list-style-type: none;
+    font-variant:small-caps;
+    font-weight:bold;
+    font-size:14px;
+
+
+}
+
+tr.footer
+
+{
+    font-variant:small-caps;
+    font-weight:bold;
+    font-size:14px;
+
+
+}
+
+
+
+ul.one_listing
+{
+    font-variant:small-caps;
+    font-weight:normal;
+    font-size:14px;
+    margin:5px auto;
+    background:white;
+    width:100%;
+}
+
+ul.about_title {
+    font-variant:small-caps;
+    font-weight:normal;
+    font-size:14px;
+    margin:5px auto;
+    background:white;
+    width:85%;
+}
+
+#about_title
+{
+
+    font-variant:small-caps;
+    font-weight:bold;
+    font-style:italic;
+    font-size:18px;
+    border:solid 2px;
+    border-color:black;
+    margin:5px auto;
+    background:white;
+    width:85%;
+
+}
+td.about_title {
+    font-variant:small-caps;
+    font-weight:normal;
+    font-size:14px;
+}
+
+ul.left_side_menu  {
+    border-style:none;
+    text-indent:15px;
+    text-align:left;
+    padding-top:5px;
+    padding-left:5px;
+    padding-right:5px;
+    padding-bottom:5px;
+}
+
+
+#smalldate  {
+    font-size:8px;
+    font-weight:normal;
+    text-align: left;
+}
+
+#smallbutton  {
+    font-size:10px;
+    font-weight:normal;
+    text-align: left;
+}
+
+#shadow {
+    -moz-box-shadow: 2px 2px 2px black;
+    -webkit-box-shadow: 2px 2px 2px black;
+    box-shadow: 2px 2px 2px black;
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+    z-index: 1
+}
+
+.PetitionTitle{
+    text-align: left;
+    font-size: 18px;
+    font-weight: normal;
+    background-color:white;
+    text-decoration: none;
+    color: black;
+
+}
+
+.PetitionTitleCommentText {
+    font-size:16px;
+    font-weight:normal;
+    text-align: left;
+    color:black;
+    font-variant:normal;
+    background-color:wheat;
+
+}
+
+
+
+.PetitionTitleText{
+    font-size:16px;
+    font-weight:normal;
+    text-align: left;
+    color:black;
+    font-variant:normal;
+
+}
+
+.PetitionTitleSmall{
+    font-size:14px;
+    font-weight:normal;
+    text-align: left;
+    color:black;
+    font-variant:none;
+
+}
+
+/**/pre {
+    background-color: #eee;
+    padding: 10px;
+    font-size: 11px;
+}
+
+a { font-size:12px;
+    font-weight:bold;
+    color:black;}
+a:visited { color: black; }
+a:hover { color:black; background-color:white;display: inline-block;  }/*
+
+div.field, div.actions {
+    margin-bottom: 10px;
+}
+
+
+.field_with_errors {
+    padding: 2px;
+    background-color: #698B69;
+    display: table;
+}
+
+#error_explanation {
+    width: 450px;
+    border: 2px solid #698B69;
+    padding: 7px;
+    padding-bottom: 0;
+    margin-bottom: 20px;
+    background-color: #FFD39B;
+}
+
+#error_explanation h2 {
+    text-align: left;
+    font-weight: bold;
+    padding: 5px 5px 5px 15px;
+    font-size: 14px;
+    margin-left:3px;
+     margin: -7px; 
+    margin-bottom: 0px;
+    background-color: #698B69;
+    color: #fff;
+}
+
+#error_explanation ul li {
+    font-size: 14px;
+    list-style: square;
+    margin-left:3px;
+
+}
+
+div.verify_d
+{
+    display:none;
+}
+
+td.label1{
+
+    font-size:14px;
+    font-weight:bold;
+
+}
+
+li.label1{
+    font-size:14px;
+    font-weight:bold;
+
+}
+
+
+td.titler1{
+
+    font-size:16px;
+    font-weight:bold;
+    color:red;
+}
+
+li.tier1{
+
+    font-size:14px;
+    font-weight:bold;
+    text-align:left;
+    color: green;
+}
+
+li.tier2{
+
+    font-size:14px;
+    font-weight:bold;
+    text-align:left;
+    color: purple;
+}
+
+li.tier3{
+
+    font-size:14px;
+    font-weight:bold;
+    text-align:left;
+    color: blue;
+}
+ul.title{
+
+    font-size:14px;
+    font-weight:bold;
+    text-align:left;
+    color: blue;
+}
+*/
+
+/*Green Rosa css*/
+
+body {
+    margin: 1% 1% 1% 1%;
+    padding: 0px;
+    height:100%;
+    background: white ;
+}
+
+
+#notice {
+    float: inherit;
+    width:inherit;
+    font-size:18px;
+    font-weight:bold;
+    text-decoration:none;
+    text-align: center;
+    color:black;
+    background-color:white;
+
+}
+.button_style {
+    font-size: 12px;
+    font-weight: normal;
+    background-color:white;
+    text-decoration: none;
+    color: black;
+    border-style:double;
+    border-width:medium;
+    border-color: black;
+    padding:2px;
+}
+
+.button_style_selected {
+    font-size: 12px;
+    font-weight: normal;
+    background-color:white;
+    text-decoration: none;
+    color: black;
+    border-style:double;
+    border-width:thin;
+    border-color: black;
+    padding:2px;
+}
+
+.button_style_menu {
+    font-size: 14px;
+    font-weight: normal;
+    background-color:white;
+    text-decoration: none;
+    color: black;
+    border-style:none;
+    border-width:medium;
+    border-color: black;
+    padding:5px;
+}
+
+.button_style_menu_big {
+    font-size: 18px;
+    font-weight: normal;
+    background-color:white;
+    text-decoration: none;
+    color: black;
+    border-style:none;
+    border-width:medium;
+    border-color: black;
+    padding:5px;
+}
+
+.button_style_safe {
+    font-size: 12px;
+    font-weight: normal;
+    background-color:white;
+    text-decoration: none;
+    color: purple;
+    border-style:double;
+    border-width:medium;
+    border-color: black;
+    padding:2px;
+}
+
+td.displayname
+{
+
+    font-size:12px;
+    font-weight:bold;
+    text-align: left;
+    color:black;
+    background-color:white;
+}
+td.labelred{
+
+    font-size:14px;
+    font-weight:bold;
+    text-align:left;
+    color: black;
+}
+
+td.labelgreen{
+
+    font-size:14px;
+    font-weight:bold;
+    text-align:left;
+    color: black;
+}
+
+
+
+
+
+.RosaTitle {
+
+    font-size:18px;
+    font-weight:bold;
+    text-align: center;
+    color:black;
+}
+
+
+
+
+
+#title
+{
+    font-variant:small-caps;
+    font-weight:bold;
+    font-style:italic;
+    font-size:48px;
+    text-align:center;
+    color:black;
+   line-height:48px;
+
+
+}
+
+.subtitle {
+
+    font-size:16px;
+    font-weight:bold;
+    text-align: center;
+    color:black;
+}
+
+.searchtitle {
+
+    font-size:16px;
+    font-weight:bold;
+    text-align: left;
+    color:black;
+}
+
+.infotitle {
+
+    font-size:14px;
+    font-weight:bold;
+    text-align: center;
+    color:black;
+}
+ul.one_listing
+{
+    font-variant:normal;
+    font-weight:normal;
+    font-size:14px;
+    margin:5px auto;
+    background:white;
+
+}
+
+
+li.tier1{
+
+    font-size:14px;
+    font-weight:bold;
+    text-align:left;
+    color: black;
+}
+
+li.tier2{
+
+    font-size:14px;
+    font-weight:bold;
+    text-align:left;
+    color: black;
+}
+
+li.tier3{
+
+    font-size:14px;
+    font-weight:bold;
+    text-align:left;
+    color: black;
+}

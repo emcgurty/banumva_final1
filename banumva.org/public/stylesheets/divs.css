@@ -1,0 +1,259 @@
+div
+{
+/*    width:960px;
+    margin:auto;
+    text-align:center;*/
+  
+}
+
+div.resource_container {
+    display:block;
+}
+
+div.resource_content {
+    display:block;
+
+}
+
+
+div.alternative_string   {
+
+    clear:both;
+    margin:5px;
+    border-style:solid;
+    border:0.5em;
+    border-color:black;
+    text-align:center;
+    padding-top:5px;
+    padding-left:15px;
+    padding-right:30px;
+    padding-bottom:5px;
+    background-color: white;
+    font-size:24px;
+    display:none;
+    line-height:32px;
+}
+
+
+div.who_is_string   {
+
+    clear:both;
+    margin:5px;
+    border-style:solid;
+    border:0.5em;
+    border-color:black;
+    text-align:center;
+    padding-top:5px;
+    padding-left:15px;
+    padding-right:30px;
+    padding-bottom:5px;
+    background-color: white;
+    font-size:24px;
+    display:none;
+    line-height:32px;
+}
+
+div.tips_string   {
+
+    clear:both;
+    margin:5px;
+    border-style:solid;
+    border:0.5em;
+    border-color:black;
+    text-align:center;
+    padding-top:5px;
+    padding-left:15px;
+    padding-right:30px;
+    padding-bottom:5px;
+    background-color: white;
+    font-size:16px;
+    display:none;
+    line-height:32px;
+}
+
+div.videos_string   {
+
+    clear:both;
+    margin:5px;
+    border-style:solid;
+    border: 2px;
+    border-color:black;
+    text-align:center;
+    padding-top:5px;
+    padding-left:15px;
+    padding-right:30px;
+    padding-bottom:5px;
+    background-color: white;
+    font-size:16px;
+    display:none;
+    line-height:32px;
+}
+
+div.maps_string   {
+
+    clear:both;
+/*    width:960px;*/
+    margin:5px;
+    border-style:solid;
+    border: 2px;
+    border-color:black;
+    text-align:center;
+    padding-top:15px;
+    padding-bottom:15px;
+    background-color: white;
+    font-size:16px;
+    display:none;
+    line-height:32px;
+}
+div.footer_content {
+    clear:both;
+    margin-left:5px;
+    margin-top:5px;
+    border-style:solid;
+    border-color:black;
+    text-indent:15px;
+    text-align:left;
+    padding-top:15px;
+    padding-left:15px;
+    padding-right:30px;
+    padding-bottom:15px;
+    
+
+
+}
+
+
+div.surround {
+    float:left;
+    /*    BORDER: 5px solid;
+        BORDER-COLOR:#F3E8D3;
+        -moz-border-radius: 5px;
+        border-radius: 5px;*/
+    width:960px;
+    /*    height:90%;*/
+    /*    z-index:2;*/
+    text-align: center;
+    /*        width: 1000px;*/
+    margin: 5px auto;
+    height: auto !important;
+    color: black;
+}
+
+div.signature_results
+{
+    position:relative;
+    z-index: 4;
+/*    width: 100%;*/
+}
+
+
+div.traverse_left_content {
+    /*    BORDER: 2px solid;BORDER-COLOR:purple;*/
+    text-align: left;
+    float:left;
+    border-width: 2px;
+/*    width: 960px;*/
+    margin-left:0px;
+    margin-right:0px;
+    margin-bottom:0px;
+    margin-top: 5px;
+    text-align: center;
+    vertical-align: top;
+    display:none;
+    /*    height: auto !important;*/
+}
+
+div.traverse_center_content {
+    /*    BORDER: 2px solid;BORDER-COLOR:purple;*/
+    text-align: inherit;
+    float:none;
+    border-width: 2px;
+/*    width: 960px;*/
+    margin-left:0px;
+    margin-right:0px;
+    margin-bottom:0px;
+    margin-top: 5px;
+    text-align: center;
+    vertical-align: top;
+    display:none;
+    /*    height: auto !important;*/
+}
+
+div.center_content {
+    /*    BORDER: 2px solid;BORDER-COLOR:purple;*/
+    text-align: center;
+    float:left;
+    border-width: 2px;
+    width: 960px;
+    margin-left:auto;
+    margin-right:auto;
+    margin-bottom:0px;
+    margin-top: 5px;
+    text-align: center;
+    vertical-align: top;
+    display:inline;
+    height: auto !important;
+    
+
+
+}
+
+div.center_content_header {
+ 
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 960px;
+  margin-top: -2.5em;
+
+
+}
+
+div.who_is_center {
+    /*    BORDER: 2px solid;BORDER-COLOR:purple;*/
+    float:left;
+    position:absolute;
+    border-width: 2px;
+/*    width: 960px;*/
+    margin-left:0px;
+    margin-right:0px;
+    margin-top: 0px;
+    text-align: center;
+    /*    bottom:0;*/
+    height:auto;
+    display:none;
+}
+
+div.video_center {
+    /*    BORDER: 2px solid;BORDER-COLOR:purple;*/
+    float:left;
+    position:absolute;
+    border-width: 2px;
+/*    width: 960px;*/
+    margin-left:0px;
+    margin-right:0px;
+    margin-top: 0px;
+    text-align: center;
+    /*    bottom:0;*/
+    height:auto;
+}
+
+div.footer_title {
+
+/*    width:960px;*/
+    height:50px;
+    background: white;
+    text-align:center;
+    vertical-align:middle;
+    font-size:x-small;
+    font-style:italic;
+    color:gray;
+}
+
+
+
+
+
+
+
+

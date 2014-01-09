@@ -1,0 +1,11 @@
+<%= form_for(:user, :url => {:action => 'show'}) do |nf| %>
+
+      <p class="PetitionTitle">User Login</p>
+      <p class="PetitionTitle">User Name:&nbsp;<%=  nf.text_field(:username) %></p>
+      <p class="PetitionTitle">User Password:&nbsp;<%=  nf.password_field(:password) %></p>
+
+      <p class="PetitionTitle"><%= submit_tag  "Login", { :class=>"button_style" } %>&nbsp;<%= link_to  "Changed My Mind", root_url, {:class=>"button_style"} %></p>
+      <p class="PetitionTitle"><%= link_to "Forgot my User Name", user_forgot_username_url, { :class=>'button_style' } %>&nbsp;<%=  link_to "Forgot my password", user_forgot_password_url, { :class=>'button_style' } %></p>
+    
+
+<% end %>

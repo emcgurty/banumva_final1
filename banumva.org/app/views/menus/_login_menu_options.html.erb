@@ -1,0 +1,46 @@
+
+
+
+
+
+<ul class="menu">
+
+  <%  @user_session = false %>
+  <%  @user_session = session[:user_id].nil? %>
+  <% unless session[:user_id].blank? %>
+    <%  @un_instance = User.find(:first, :readonly => true, :conditions => ['user_id = ?',session[:user_id]]) %>
+    <% @un = @un_instance.username %>
+  <% end %>
+  <%  @any_user = User.find(:all, :readonly => true, :conditions => ['activation_code IS NULL']).count %>
+  <%  if (@any_user == 0) %>
+
+    <li>
+      <input type="button" value="Register"  class="button_style_menu" id="register" />
+
+    </li>
+  <%  elsif (@any_user >= 1) && (@user_session) %>
+    <li>
+      <input type="button" value="Login"  class="button_style_menu" id="login" />
+
+      &nbsp;-&nbsp;</li>
+    <li>
+      <input type="button" value="Register"  class="button_style_menu" id="register" />
+
+      &nbsp;&nbsp;</li>
+
+  <% elsif (@any_user >= 1)   && !(@user_session) %>
+    <li>
+      <input type="button" value="Logout, <%= @un %>"  class="button_style_menu" id="logout" />
+
+      &nbsp;-&nbsp;</li>
+    <li>
+      <input type="button" value="Update User <%= @un %> Detail"  class="button_style_menu" id="update_detail" />
+
+
+    </li>
+
+  <%  end %>
+
+</ul>
+
+

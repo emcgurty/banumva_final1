@@ -1,0 +1,79 @@
+:us_states:
+- [AK, Alaska]
+- [WY, Wyoming]
+
+:countries:
+- [ZW, Zimbabwe]
+
+:collaborator:
+ :name: Elizabeth McGurty
+ :url: www.banumva.org
+ :address1: ''
+ :city: ""
+ :state: VA
+ :country: US
+ :postal_code: ''
+ :email: 
+ :petition_message: 'Please place your petition message here'
+ :petition_subtitle: 'Please place your long petition title here  ......'
+ :petition_title_short: ''
+ :about_us: ''
+
+
+:display_rows:
+  :number: '10'
+  :text: ten
+
+:display_links:
+  :number: '4'
+  
+:display_resources:
+  :number: '3'
+  :max: '12'
+
+:smtp:
+  :address: 'smtp.gmail.com'
+  :port: 587
+  :domain: 'gmail.com'
+  :authentication: :plain
+  :user_name: ''
+  :password: ''
+
+:videos:
+- ['Uranium Mining Impact on Roanoke Virginia Watershed', 'https://www.youtube.com/embed/INYpSPzqaXg'] 
+- ['Navajo Yellow Monster', 'https://www.youtube.com/embed/srVjPp1TwdA']
+- ['Virginia Uranium Mining Pits Economic Gains Against Environmental Risks', 'https://www.youtube.com/embed/iImB9cfZSw0']
+- ['Hot Water Documentary Trailer', 'https://www.youtube.com/embed/mlqhjSMw2nA']
+- ['Former Rep. Dennis Kucinich, (D-Ohio), and Hot Water Executive Producer Elizabeth Kucinich on the dangers and waste of nuclear energy', 'http://video.foxbusiness.com/v/2226539836001/new-documentary-takes-on-the-nuclear-power-industry/?playlist_id=1671716501001']
+- ['Uranium mining could impact local water', 'https://www.youtube.com/embed/FCPwTRIRFBk']
+- ['After Decades of Uranium Mining, Navajo Nation Struggles With Legacy of Contamination', 'https://www.youtube.com/embed/I7jl7bZaCo8']
+- ['Uranium Goes Critical -BBC Documentary', 'https://www.youtube.com/embed/9JBGpIzlDQ4']
+- ['Uranium - Is It A Country? Documentary Tracking The Origins Of Nuclear Energy', 'https://www.youtube.com/embed/LztHWpFpT4g']
+- ['How Is Uranium Mining Conducted in the United States?', 'https://www.youtube.com/embed/KqzzapZCXA4']
+- ['Uranium Mining in Virginia: A Risky Experiment', 'https://www.youtube.com/embed/bL1Ich2dWRw']
+- ['The Future of Uranium Mining in South-Central Virginia', 'https://www.youtube.com/embed/_epFdrAIxbY']
+- ['What is Behind Proposed Uranium Mining In Virginia', 'https://www.youtube.com/embed/Q6rVUkyq_Wc']
+- ['Richmond Symposium on Uranium Mining', 'https://www.youtube.com/embed/ZwQ4TYPMTAk']
+- ['Dr. Helen Caldicott - Nuclear Power is not the Answer', 'https://www.youtube.com/embed/zYGLKoZhej8']
+- ['Protesting uranium mining in Chatham Virginia', 'http://www.youtube.com/embed/v_mtFZMf1_w']
+- ['The Heritage Foundation, DC - Powering America: Uranium Mining and Milling', 'https://www.youtube.com/embed/oT2LHGG-9Ko']
+- ['Fallujah more radioactive than Hiroshima', 'https://www.youtube.com/embed/gWIy9-cfMIo']
+- ['Nuclear Event USA Seabrook Nuclear Power Plant New Hampshire', 'https://www.youtube.com/embed/hevbdta8hdc']
+- ['The Fukushima Syndrome - Japan', 'https://www.youtube.com/embed/J-0Rx-GoLIs']
+
+:tips: []
+
+
+
+
+:who_is:
+- ['InvestmentMine',  'Uranium Investing - Uranium Stocks, Mining Companies, Prices and News', 'http://www.infomine.com/investment/uranium/']
+- ['MiningFeeds', 'Uranium Mining Companies Listed in Canada', ' http://www.miningfeeds.com/uranium-mining-report-canada']
+- ['WISE: World Information Service on Energy',  'Uranium Radiation and Health Effects, Nuclear Fuel Chain, Dams, Enrichment Fabrication Process, etc.', 'http://www.wise-uranium.org/']
+- ['KPBS: Tribes, Enviros Fight Uranium Mining Near Grand Canyon',  'Article leads to interesting links', 'http://www.kpbs.org/news/2013/jun/03/tribes-enviros-fight-uranium-mining-grand-canyon/']
+- ['Piedmont Environmental Council (PEC)', 'The PEC works to promote and protect the Virginia Piedmonts rural economy, natural resources, history and beauty', 'http://pecva.org/maps-and-resources/publications/piedmont-view/177-spring-2013-piedmont-view/832-uranium-minging-going-going-gone']
+
+
+:alternatives:
+- ['BloomEnergy',  "Bloom statement: 'Our unique on-site power generation systems utilize an innovative new fuel cell technology with roots in NASA's Mars program.'", 'http://www.bloomenergy.com']
+- ['NationalAtlas',  'Renewable Energy Sources in the United States ', 'http://nationalatlas.gov/articles/people/a_energy.html']

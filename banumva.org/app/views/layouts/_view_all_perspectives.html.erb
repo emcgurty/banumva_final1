@@ -1,0 +1,8 @@
+<% approved_perspectives = Perspectives.find(:all, :readonly=> true, :conditions => "approved = 1" )  %>
+<%    if (approved_perspectives.count  > 0)  %>
+  <li class=tier2>
+    <%= link_to 'View All Perspectives', perspectives_show_url, :class =>'button_style'  %>
+  </li>
+<%    else  %>
+  <li class=tier2>View All Perspectives</li>
+<%    end %>

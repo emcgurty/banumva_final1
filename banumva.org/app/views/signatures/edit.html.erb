@@ -1,0 +1,42 @@
+<script>
+  $(document).ready(function() {
+    $("#current_comment").change();
+  });
+
+</script>
+<p class=PetitionTitle>The Petition</p>
+<%=  render :partial => 'signatures/thepetition' %>
+<%= form_for(:signatures , :url => {:action => 'edit'}) do |form| %>
+
+  <%= render :partial => 'home/check_for_errors', :locals => {:data_source => @signatures}  %>
+
+  <p class=PetitionTitle><span title="First name is a required field. Please no more than 35 alpha characters.">First Name: </span>
+    <%=  text_field(:signatures, :first_name, :maxlength=>35 ) %>&nbsp;
+    MI: <%=  text_field(:signatures, :mi, :size => "1", :maxlength => "1" ) %>&nbsp;
+    <span title="Last name is a required field. Please no more than 35 alpha characters.">Last Name: </span>
+    <%=  text_field(:signatures, :last_name, :maxlength=>35  ) %></p>
+  <p class=PetitionTitle>Display Full Name? <%=  check_box(:signatures, :display_name) %></p>
+  <p class=PetitionTitle><span title="Alias is a required field. Please no fewer than 8 characters and no more than 16.">Alias: </span>
+    <%=  text_field(:signatures, :signer_alias ) %></p>
+  <p class=PetitionTitle><span title="Email is a required field -- for signature acknowledgement.">email: </span>
+    <%=  text_field(:signatures, :email ) %>&nbsp; Display email?: <%=  check_box(:signatures, :display_email) %></p>
+
+
+ <p class=PetitionTitle><span title="Either a City or County is a required field. Please no more than 50 alpha-numeric characters.">City or County:</span>
+    <%=  text_field(:signatures, :city ) %>
+    </p>
+
+
+  <p class=PetitionTitle>State:  <%= render :partial => 'layouts/generate_combo', :locals => {:name => :us_states, :selected => @signatures.state_id} %>&nbsp;Providence: <%=  text_field(:signatures, :providence ) %></p>
+  <p class=PetitionTitle>Country:  <%= render :partial => 'layouts/generate_combo', :locals => {:name => :countries, :selected => @signatures.country_id} %>&nbsp;Postal Code: <%=  text_field(:signatures, :postal_code ) %></p>
+  <p class=PetitionTitle><span title="Optional comments, yet please no more than 255 characters.">Comments: </span>
+    <%=  text_area(:signatures, :comments, :rows=>5, :cols=>55,  :maxlength =>255,:id=>"current_comment" ) %></p>
+  <p  class="PetitionTitleText" ><span title="Count excludes carriage returns." >Approximate Characters Remaining: </span><label id="current_comment_count" >255</label></p>
+  <%=  hidden_field(:signatures, :uuid ) %>
+
+
+  <%= submit_tag "Submit Edit",  :class=>"button_style"  %>
+  <%= link_to "Changed My Mind", show_refresh_url, :class=>"button_style" %>
+
+<% end %>
+

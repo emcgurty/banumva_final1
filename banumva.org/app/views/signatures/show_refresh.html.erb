@@ -1,0 +1,131 @@
+<%= form_for(:signatures , :url => {:action => 'delete'}) do |form| %>
+  <p class=PetitionTitle>The Petition</p>
+  <%=  render :partial => 'signatures/thepetition' %>
+
+  <% if @signatures.blank? %>
+
+    <p class=PetitionTitle>No signatures have yet been submitted.</p>
+    <p class=PetitionTitle><%= link_to "Sign the Petition",  signatures_new_url, {:class=>"button_style"}  %></p>
+
+  <% else %>
+    <% @current_count = Signatures.count() %>
+    <% @count_msg = "Currently #{pluralize(@current_count, "signature")}." %>
+    <p class=PetitionTitileText>Displaying signatures in groups of <%= CollaboratorMethods.collaborator_value[:display_rows][:text]  %>.&nbsp;&nbsp;
+      <%= @count_msg %></p>
+
+    <% myColor = 0 %>
+    <% row_number = 0 %>
+    <% showComments = false %>
+    <% myDiv =  '' %>
+    <table class=ListComments >
+      <tr style="text-align:left;">
+        <th style="width:2%" >No.</th>
+        <th style="width:24%">Full Name</th>
+        <th style="width:9%">Alias</th>
+        <th style="width:15%">email</th>
+        <th style="width:10%">City</th>
+        <th style="width:6%">State</th>
+        <th style="width:15%">Providence</th>
+        <th style="width:6%">Country</th>
+        <th style="width:10%">Created</th>
+
+      </tr>
+
+      <% @signatures.each do |item| %>
+        <% unless item.comments.blank? %>
+          <% showComments = true %>
+          <% myDiv =  item.uuid %>
+        <% else %>
+          <% showComments = false %>
+        <% end %>
+        <% row_number = row_number + 1 %>
+
+        <tr bgcolor="lightgray" style="text-align:left;">
+
+
+          <td style="width:2%"  ><%=  row_number %></td>
+          <td style="width:24%"  ><%=  get_full_name(item) %></td>
+          <td style="width:9%"  ><%=  item.signer_alias %></td>
+          <td style="width:15%"  >
+            <% if item.display_email == 1%>
+              <%= mail_to item.email %>
+            <% else %>
+              &nbsp;
+            <% end %> </td>
+
+          <td style="width:10%"><%= item.city %></td>
+
+          <td style="width:6%"><%=  item.state_id  %></td>
+
+          <td style="width:15%"><%=  item.providence %></td>
+          <td style="width:6%" ><%=  item.country_id  %> </td>
+
+          <td style="width:10%" id=smalldate  >
+            <%=  item.created_at %>
+          </td>
+        </tr>
+
+
+
+        <% show_dash = false %>
+        <% unless session[:user_id].blank? %>
+          <% if session[:user_id] == item.user_id %>
+            <tr bgcolor="#fdf5e6">
+              <td colspan="9">
+                Permitted functions for <%= item.signer_alias %>'s Signature:<input type="button" value="Delete" id="delete_signature" name="<%= item.uuid %>" class="button_style_menu" />|<%= link_to "Edit", signature_edit_url(item.uuid)  %>
+                <% show_dash = true %>
+                <% if (showComments) %>
+                  <%= show_dash ? '|': "" %>
+                  <input type="button" id="smallbutton_<%= myDiv %>"  value="Show Comments" class="button_style_menu" onClick="displayComments('<%= myDiv %>');" />
+                <% end %>
+                <%=  hidden_field_tag(:id, item.uuid ) %>
+              </td>
+            </tr>
+          <% end %>
+        <% else %>
+          <% if (showComments) %>
+            <tr bgcolor="#fdf5e6">
+              <td colspan="9">
+                <input type="button" id="smallbutton_<%= myDiv %>"  value="Show Comments" class="button_style_menu" onClick="displayComments('<%= myDiv %>');" />
+
+              </td>
+            </tr>
+          <% end %>
+
+        <% end %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <% if (showComments) %>
+          <tr>
+            <td colspan="9">
+              <div id="<%= myDiv  %>"  style="display:none;padding:0;margin-left:10px;BORDER: 0.05em solid;BORDER-COLOR:#A4A1A1;">
+                <label class="PetitionTitleCommentText"><%= item.signer_alias %>'s&nbsp;Comments: <%=  item.comments %></label></div>
+            </td>
+          </tr>
+        <% end %>
+
+      <% end %>
+    </table>
+
+
+
+    <div id=groupsofrecords>
+      <%= render :partial => 'signatures/groupsof', :locals => {:object => @signatures, :current_count => @current_count } %>
+    </div>
+  <% end %>
+<% end %>

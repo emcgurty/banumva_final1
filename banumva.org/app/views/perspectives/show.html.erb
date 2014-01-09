@@ -1,0 +1,72 @@
+<% myColor = 0 %>
+<% counter = 0 %>
+<% if @perspectives.blank? %>
+  <p class="PetitionTitle">Offered Perspectives</p>
+  <h4 >No perspectives have been offered yet.</h4>
+<% else %>
+  <p class=PetitionTitle >Offered Perspectives</p>
+
+  <table class="ListComments" >
+    <tr >
+      <th style="width:2%">No.</th>
+      <th >Alias</th>
+      <th >email</th>
+      <th >Perspective</th>
+      <th >Date Created</th>
+      <th >Function</th>
+      <th >Respond?</th>
+    </tr>
+    <% @perspectives.each do |items| %>
+
+      <% counter = counter + 1 %>
+      <% myColor = myColor +1 %>
+      <% if (myColor % 2) == 1 %>
+        <tr bgcolor="lightgray" >
+        <% else %>
+        <tr bgcolor="white" >
+        <% end %>
+        <td style="width:2%"><%= counter %></td>
+        <td  ><%=  User.find(items.user_id).user_alias %></td>
+        <td  ><%=  mail_to User.find(items.user_id).email %></td>
+        <td ><textarea rows="4" cols="50" readonly><%=  items.record_text %></textarea></td>
+        <td ><%=  items.created_at %></td>
+
+
+
+        <% unless session[:user_id].blank? %>
+          <% if items.user_id == session[:user_id] %>
+            <td >
+              <% @res_record = Contributions.find_by_p_uuid(items.p_uuid) %>
+
+              <% if @res_record.blank? %>
+                <input type="button" value="Delete" id="delete_perspective" name="<%= items.p_uuid %>" class="button_style_menu" />  ||
+              <% else %>
+                <% @res_record = nil %>
+              <% end %>
+
+
+
+
+
+
+              <%= link_to "Edit", perspectives_edit_url(items.p_uuid)  %></td>
+          <% else %>
+            <td >N/A</td>
+          <% end %>
+        <% else %>
+          <td >N/A</td>
+        <% end %>
+
+
+        <td ><%= link_to "Offer Response", contributions_new_url(items.p_uuid) %></td>
+      </tr>
+      <% @contribute_records = Contributions.find(:all, :readonly=>true, :conditions => ['p_uuid = ?',items.p_uuid ]) %>
+      <tr > <td colspan="7"><%= render :partial => 'contributions/list', :locals => {:object => @contribute_records} %></td</tr>
+
+    <% end %>
+  </table>
+<% end %>
+
+<p class="PetitionTitle">
+  <%= link_to "Offer Your Perspective" , perspectives_new_url, {:class=>"button_style"} %>
+</p>

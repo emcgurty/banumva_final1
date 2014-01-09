@@ -1,0 +1,79 @@
+
+<% unless object.blank? %>
+
+  <table class="ListComments"  >
+
+    <tr>
+      <td style="width:19%"></td>
+      <td style="width:19%"></td>
+      <td style="width:19%"></td>
+      <td style="width:19%"></td>
+      <td style="width:19%"></td>
+      <td style="width:5%"></td>
+    </tr>
+    <tr>
+      <td colspan=3 >
+        <%= link_to "Sign the Petition", signatures_new_url,  {:class=>"button_style"} %>
+      </td>
+      <td style="width:19%">&nbsp;</td>
+      <td style="width:19%">&nbsp;</td>
+      <td style="width:5%">&nbsp;</td>
+
+    </tr>
+    <tr>
+      <td style="width:19%">&nbsp;</td>
+      <td style="width:19%">&nbsp;</td>
+      <td style="width:19%">&nbsp;</td>
+      <td style="width:19%">&nbsp;</td>
+      <td style="width:19%">&nbsp;</td>
+      <td style="width:5%">&nbsp;</td>
+
+    </tr>
+
+    <tr >
+
+      <% myRowCount =  @signatures.count %>
+      <% myLastFew = 0 %>
+      <% display_rows = CollaboratorValues::CollaboratorMethods.collaborator_value[:display_rows][:number].to_i %>
+      <% myLastFew = (myRowCount % display_rows ) %>
+      <% i = 1 %>
+      <% j = 0 %>
+      <% startID = '' %>
+
+      <% @signatures.each do |item| %>
+
+
+        <% if startID.blank? %>
+          <%   startID = item.uuid %>
+        <% end %>
+
+        <% if i <= (myRowCount - myLastFew +1) %>
+          <% if (i % display_rows == 0)  %>
+            <% myLinkTitle = "Rows " + (i-(display_rows-1)).to_s + "..." + (i).to_s %>
+            <td style="width:19%" >
+              <%= link_to myLinkTitle, show_refresh_url(startID), {:class=>"button_style"} %>
+            </td>
+            <% j += 1 %>
+            <% if (j % 4) == 0 %>
+            </tr><tr>
+            <% end %>
+            <% startID = '' %>
+          <% elsif (i > (myRowCount - myLastFew) ) %>
+            <% myLinkTitle = "Rows " + (i).to_s + "..." + (myRowCount).to_s %>
+            <td style="width:19%" valign=center align=left>
+              <%= link_to myLinkTitle, show_refresh_url, :id => startID, :class =>"button_style"  %>
+            </td>
+            <% startID = '' %>
+          <% end %>
+          <% i +=1 %>
+
+        <% end %>
+
+      <% end %>
+
+    </tr>
+
+  </table>
+
+<% end %>
+

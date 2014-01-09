@@ -1,0 +1,22 @@
+<%= form_for(:contact_us, :url => {:action => 'contact_us'}) do |form|%>
+  <% @contact_us.each do |val| %>
+    <div id="about_this_site" style="text-align:left;padding-left:25px;padding-right:25px;padding-bottom:25px;BORDER: 1px solid;BORDER-COLOR:lightgray;background-color: transparent;">
+      <p class="PetitionTitle">No Uranium Mining in VA! Contact</p>
+      <h4>All fields are required</h4>
+      <p class="PetitionTitleText"><span title="Subject is required. Use 6 through 24 alpha characters">Subject: </span>
+        <%= form.text_field('user_alias', {:value => (val['user_alias'] ? val['user_alias']: ''), :maxlength => '24'}) %></p>
+
+      <p class="PetitionTitleText"><span title="Email is required.">Your email address: </span>
+        <%=  form.text_field('email', {:value => (val['email'] ? val['email']: ''), :maxlength =>150, :size=>50}) %></p>
+
+
+      <p class="PetitionTitleText"><span title="Please provide your comments here. No more than 255 characters">Comments: </span>
+        <%=  form.text_area('comments', {:rows=> '6', :cols=> '30', :value => (val['comments'] ? val['comments']: ''), :maxlength=>255, :id=>"current_comment"}) %></p>
+      <p  class="PetitionTitleText" ><span title="Count excludes carriage returns." >Approximate Characters Remaining: </span><label id="current_comment_count" >255</label></p>
+      <br/>
+      <%= form.submit "Submit Contact",{:class=>"button_style"} %>
+      <%= link_to "Changed My Mind", root_url, {:class=>"button_style"} %>
+      <br/>
+    </div> <br/>
+  <% end  %>
+<% end %>

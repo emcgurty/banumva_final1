@@ -1,0 +1,20 @@
+<script>
+   $(document).ready(function() {
+      $("#current_comment").change();
+   });
+
+</script>
+
+<%= form_for(:perspectives, :url => {:action => 'create'}, :html => {:multipart => true}) do |nf| %>   
+
+  <%= render :partial => 'home/check_for_errors', :locals => {:data_source => @perspectives}  %>
+
+<p  class="PetitionTitle" >Share Your Perspective</p>
+<p  class="PetitionTitle"  >Your Alias: <%= User.find(session[:user_id]).user_alias %></p>
+<p  class="PetitionTitle" >Your email: <%=  User.find(session[:user_id]).email %></p>
+<p  class="PetitionTitle" ><span title="Comment is required.  Please no more than 255 characters." >Your comments: </span><%=  nf.text_area(:record_text, :rows=>6, :cols=>30, :maxlength =>255, :id=>"current_comment") %></p>
+<p  class="PetitionTitleText" ><span title="Count excludes carriage returns." >Approximate Characters Remaining: </span><label id="current_comment_count" >255</label></p>
+<p  class="PetitionTitle"><%= submit_tag "Offer Perspective",{:class=>"button_style"} %>&nbsp;<%= link_to "Changed My Mind", perspectives_show_url, {:class=>"button_style"} %></p>
+<%=  nf.hidden_field :remote_ip, :value => request.remote_ip %>
+
+<% end %>
