@@ -36,7 +36,7 @@ development:
 production:
   adapter: mysql
   database: green_rosa
-  username: green_rosa
-  password: db_cbov!biqYTCgJHGTES!12
+  username: 
+  password: 
   host: mysql.data.greenrosa.com
 
